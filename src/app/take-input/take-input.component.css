@@ -1,0 +1,46 @@
+mat-card {
+  margin-top: 16px;
+}
+
+
+
+mat-form-field {
+  width: 100%;
+}
+
+agm-map {
+  height: 300px;
+  margin: 0px;
+}
+
+.mapCard {
+  padding: 5px;
+}
+
+mat-progress-bar {
+  height: 20px;
+}
+
+.matHead {
+  text-align: center;
+  color: black;
+  font-size: 17px;
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.messageInitial {
+  text-align: center;
+  color: gray;
+  font-size: 15px;
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+.loadingCaption {
+  text-align: center;
+  color: gray;
+  font-size: 15px;
+  font-family: Roboto;
+  font-weight: 300;
+}

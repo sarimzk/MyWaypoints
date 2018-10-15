@@ -1,0 +1,44 @@
+<mat-card>
+  <form (submit)="onGetWeather(weatherForm)" #weatherForm="ngForm">
+    <mat-form-field>
+      <input matInput #origin="ngModel" ngModel name="originCity" placeholder="Origin City" type="text" required>
+      <mat-error *ngIf="origin.invalid">Please enter origin city</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #destination="ngModel" ngModel name="destinationCity" placeholder="Destination City" type="text" required>
+      <mat-error *ngIf="destination.invalid">Please enter destination city</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Get weather</button>
+  </form>
+</mat-card>
+
+<mat-card class="mapCard">
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-direction *ngIf="dir.length > 0" [origin]="dir[0]" [destination]="dir[1]"></agm-direction>
+    <span *ngIf="mapMarkers.length > 0 && progBar == 1">
+      <agm-marker *ngFor="let marker of mapMarkers" [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+    </span>
+  </agm-map>
+</mat-card>
+
+<mat-card class="progresBar" *ngIf="progBar == 0 && !destination.invalid && !origin.invalid">
+  <p class="loadingCaption">Getting weather for the specified route...</p>
+  <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
+</mat-card>
+
+
+<mat-card *ngIf="outputWeather.length > 0 && progBar == 1">
+  <mat-list *ngIf="outputWeather.length > 0">
+    <mat-list-item class="matHead">Weather Along The Entered Route:</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let weather of outputWeather">{{ weather }}</mat-list-item>
+  </mat-list>
+</mat-card>
+
+
+<p class="messageInitial" *ngIf="outputWeather.length == 0 && progBar == 1">Enter origin and destination cities to see the weather along the route.</p>
+
+
+
+
+
